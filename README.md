@@ -8,7 +8,7 @@ I'm glad you asked! Behold:
 
 ![MicroView displaying all input pin states](https://raw.githubusercontent.com/galaktor/microview_pins/master/preview.jpg)
 
-The boxes correspond roughly to the pin located at the position on the MicroView. A filled box means a signal above 0 was read on the pin. An empty box means signal of 0. All pins are read as digital pins, even the analog pins below (the row has an 'A' indicating that they are analog!). If I can think of an easy way to visualize analog signals on confined space I might upgrade the analog bit but for now, it's binary. 
+The boxes correspond roughly to the pin located at the position on the MicroView. A filled box means a signal above 0 was read on the pin. An empty box means signal of 0. All pins are read as digital pins, even the analog pins below (the row has an 'A' indicating that they are analog, i.e. "A0", "A1" etc). If I can think of an easy way to visualize analog signals on confined space I might upgrade the analog bit but for now, it's binary. 
 Non-input pins are replaced with a character that matches the pin's purpose as per the [MicroView overview page](http://learn.microview.io/intro/general-overview-of-microview.html):
 
 * 'V' = 'VIN' (MV pin 16)
