@@ -33,7 +33,7 @@ Non-input pins are replaced with a character that matches the pin's purpose as p
 
 (Note that in this picture, the pins are dangling so the values are random.)
 
-The input signals are polled every 50 microseconds, which was not chosen with much thought and can be easily changed in the code (look for the delay() call in the loop() function).
+The input signals are polled every 50 milliseconds, which was not chosen with much thought and can be easily changed in the code (look for the delay() call in the loop() function).
 
 #License
 The source code is licensed under the GPL v3 license. See LICENSE and COPYRIGHT files.
