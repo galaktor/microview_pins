@@ -54,6 +54,7 @@ void setup() {
 void loop() {
   delay(50);
   for(int i=0; i<PIN_CNT; i++) {
+    clearPinBox(i);
     drawPinBox(i);
   }
   // render
@@ -69,6 +70,10 @@ void drawText(int pinIndex) {
     uView.setCursor(boxes_x[pinIndex]+TXT_PAD_L, boxes_y[pinIndex]-BOX_HEIGHT-2);
     uView.print(pins_ar[pinIndex]-ANALOG_OFFSET);
   }
+}
+
+void clearPinBox(int pinIndex) {
+  uView.rectFill(boxes_x[pinIndex], boxes_y[pinIndex], BOX_WIDTH, BOX_HEIGHT, 0, 0);
 }
 
 void drawPinBox(int pinIndex) {
