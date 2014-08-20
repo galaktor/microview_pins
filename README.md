@@ -11,13 +11,25 @@ I'm glad you asked! Behold:
 The boxes correspond roughly to the pin located at the position on the MicroView. A filled box means a signal above 0 was read on the pin. An empty box means signal of 0. All pins are read as digital pins, even the analog pins below (the row has an 'A' indicating that they are analog, i.e. "A0", "A1" etc). If I can think of an easy way to visualize analog signals on confined space I might upgrade the analog bit but for now, it's binary. 
 Non-input pins are replaced with a character that matches the pin's purpose as per the [MicroView overview page](http://learn.microview.io/intro/general-overview-of-microview.html):
 
-    | Character | MV pin  | MV pin # |    
-    |-----------|---------|----------|
-    |    'V'    |  'VIN'  |   16     |
-    |    '+'    |  '+5V'  |   15     |
-    |    '-'    |  'GND'  |    8     |
-    |    'R'    | 'RESET' |    1     |
-    |--------------------------------|
+    | Display | Arduino pin | Detail  | MV pin # |    
+    |---------|-------------|---------|----------|
+    |   'V'   |             |   VIN   |   16     |
+    |   '+'   |             |   +5V   |   15     |
+    |   '6'   |      6      |   PWM   |   14     |
+    |   '5'   |      5      |   PWM   |   13     |
+    |   '3'   |      3      |   PWM   |   12     |
+    |   '2'   |      2      |         |   11     |
+    |   '1'   |      1      |   TXD   |   10     |
+    |   '0'   |      0      |   RXD   |    9     |
+    |   '-'   |             |   GND   |    8     |
+    |  'A0'   |     A0      |         |    7     |
+    |  'A1'   |     A1      |         |    6     |
+    |  'A2'   |     A2      |         |    5     |
+    |  'A3'   |     A3      |         |    4     |
+    |  'A4'   |     A4      |   SDA   |    3     |
+    |  'A5'   |     A5      |   SCL   |    2     |
+    |   'R'   |     --      |  RESET  |    1     |
+    |--------------------------------------------|
 
 (Note that in this picture, the pins are dangling so the values are random.)
 
