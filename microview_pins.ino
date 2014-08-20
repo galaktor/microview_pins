@@ -33,6 +33,7 @@ void setup() {
   uView.drawChar(0*BOX_WIDTH, ROW_BTM, 'R');
   uView.drawChar(0*BOX_WIDTH, ROW_BTM-BOX_HEIGHT-2, 'A');
   uView.drawChar(7*BOX_WIDTH+2, ROW_BTM, '-');
+  uView.line(0, ROW_CTR, 64, ROW_CTR);
   uView.display();
 }
 
