@@ -29,6 +29,12 @@ void setup() {
   for(int i=0; i<PIN_CNT; i++) {
     // set mode
     pinMode(pins_ar[i], INPUT);
+    
+    /* uncomment this line if you wish to invert the behaviour
+       i.e. monitor active-low signals. default pin value will
+       be 1, and when pin connected to ground, will go to 0 */
+    // digitalWrite(pins_ar[i], HIGH); // write, even if in INPUT mode; activates pullup
+    
     // draw pin text
     drawText(i);
   }  
