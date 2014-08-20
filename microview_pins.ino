@@ -19,14 +19,14 @@ const int boxes_y[PIN_CNT] = { ROW_TOP, ROW_TOP, ROW_TOP, ROW_TOP, ROW_TOP, ROW_
 const int TXT_PAD_L=2;
 
 void setup() {
-    // set all pins to input
+  // set all pins to input
   for(int i=0; i<PIN_CNT; i++) {
-      pinMode(pins_ar[i], INPUT);
+    pinMode(pins_ar[i], INPUT);
   }  
-  
+
   uView.begin();
   uView.clear(PAGE);
-  
+
   // draw static pins
   uView.drawChar(0*BOX_WIDTH, ROW_TOP, 'V');
   uView.drawChar(1*BOX_WIDTH, ROW_TOP, '+');
@@ -39,22 +39,30 @@ void setup() {
 void loop() {
   delay(50);
   for(int i=0; i<PIN_CNT; i++) {
-     // access above arrays to read and draw here 
-     if(boxes_y[i] == ROW_TOP) {
-       uView.setCursor(boxes_x[i]+TXT_PAD_L, boxes_y[i]+BOX_HEIGHT+2);       
-       uView.print(pins_ar[i]);
-     } else {
-       uView.setCursor(boxes_x[i]+TXT_PAD_L, boxes_y[i]-BOX_HEIGHT-2);
-       uView.print(pins_ar[i]-ANALOG_OFFSET);
-     }
-     if(digitalRead(pins_ar[i])) {
-        // >0, therefore fill
-        uView.rectFill(boxes_x[i], boxes_y[i], BOX_WIDTH, BOX_HEIGHT);
-      } else {
-        // 0, therefore empty
-        uView.rect(boxes_x[i], boxes_y[i], BOX_WIDTH, BOX_HEIGHT);  
-      }
+    drawText(i);
+    drawPinBox(i);
+
   }   
-   uView.display();
+  uView.display();
+}
+
+void drawText(int pinIndex) {
+  if(boxes_y[pinIndex] == ROW_TOP) {
+    uView.setCursor(boxes_x[pinIndex]+TXT_PAD_L, boxes_y[pinIndex]+BOX_HEIGHT+2);       
+    uView.print(pins_ar[pinIndex]);
+  } 
+  else {
+    uView.setCursor(boxes_x[pinIndex]+TXT_PAD_L, boxes_y[pinIndex]-BOX_HEIGHT-2);
+    uView.print(pins_ar[pinIndex]-ANALOG_OFFSET);
+  }
+}
+
+void drawPinBox(int pinIndex) {
+  if(digitalRead(pins_ar[pinIndex])) {
+    uView.rectFill(boxes_x[pinIndex], boxes_y[pinIndex], BOX_WIDTH, BOX_HEIGHT);
+  } 
+  else {
+    uView.rect(boxes_x[pinIndex], boxes_y[pinIndex], BOX_WIDTH, BOX_HEIGHT);  
+  } 
 }
 
