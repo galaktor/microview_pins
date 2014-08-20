@@ -23,13 +23,15 @@ const int boxes_y[PIN_CNT] = { ROW_TOP, ROW_TOP, ROW_TOP, ROW_TOP, ROW_TOP, ROW_
 const int TXT_PAD_L=2;
 
 void setup() {
-  // set all pins to input
-  for(int i=0; i<PIN_CNT; i++) {
-    pinMode(pins_ar[i], INPUT);
-  }  
-
   uView.begin();
   uView.clear(PAGE);
+  
+  for(int i=0; i<PIN_CNT; i++) {
+    // set mode
+    pinMode(pins_ar[i], INPUT);
+    // draw pin text
+    drawText(i);
+  }  
 
   // draw static pins
   uView.drawChar(0*BOX_WIDTH, ROW_TOP, 'V');
@@ -46,7 +48,6 @@ void setup() {
 void loop() {
   delay(50);
   for(int i=0; i<PIN_CNT; i++) {
-    drawText(i);
     drawPinBox(i);
   }
   // render
