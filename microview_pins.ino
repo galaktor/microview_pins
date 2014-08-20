@@ -37,7 +37,9 @@ void setup() {
   uView.drawChar(0*BOX_WIDTH, ROW_BTM, 'R');
   uView.drawChar(0*BOX_WIDTH, ROW_BTM-BOX_HEIGHT-2, 'A');
   uView.drawChar(7*BOX_WIDTH+2, ROW_BTM, '-');
+  // draw a pretty line through the middle!
   uView.line(0, ROW_CTR, 64, ROW_CTR);
+  // render
   uView.display();
 }
 
@@ -46,8 +48,8 @@ void loop() {
   for(int i=0; i<PIN_CNT; i++) {
     drawText(i);
     drawPinBox(i);
-
-  }   
+  }
+  // render
   uView.display();
 }
 
@@ -70,4 +72,3 @@ void drawPinBox(int pinIndex) {
     uView.rect(boxes_x[pinIndex], boxes_y[pinIndex], BOX_WIDTH, BOX_HEIGHT);  
   } 
 }
-
