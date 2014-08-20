@@ -1,19 +1,27 @@
+/*  Copyright 2014, Raphael Estrada
+    Author email:   <galaktor@gmx.de>
+    Project home:   <https://github.com/galaktor/microview_pins>
+    Licensed under The GPL v3 License (see README and LICENSE files) */
 #include <MicroView.h>
 
 const int BOX_HEIGHT = 8;
 const int BOX_WIDTH  = 8;
 
-const int TOP = 0;
-const int BOT = 47-BOX_HEIGHT;
+const int ROW_TOP = 0;
+const int ROW_CTR = 23;
+const int ROW_BTM = 47-BOX_HEIGHT;
+const int COL_CTR = 32;
 
-/*     MV PIN           09  10  11  12  13  14  07  06  05  04  03  02    */
-const int pins_ar[] = {  0,  1,  2,  3,  5,  6,  7,  8,  9, 10, 11, 12 }; // arduino pin nr
-const int boxes_x[] = { 56, 48, 40, 32, 24, 16, 48, 40, 32, 24, 16,  8 }; // x coordinate for box
-const int boxes_y[] = {  TOP,  TOP,  TOP,  TOP,  TOP,  TOP, BOT, BOT, BOT, BOT, BOT, BOT }; // y coordinate for box
+const int PIN_CNT=12;
+
+/*     MV PIN                       09       10       11       12       13       14       07       06       05       04       03       02    */
+const int pins_ar[PIN_CNT] = {       0,       1,       2,       3,       5,       6,      A0,      A1,      A2,      A3,      A4,      A5 }; // arduino pin nr
+const int boxes_x[PIN_CNT] = {      56,      48,      40,      32,      24,      16,      48,      40,      32,      24,      16,       8 }; // x coordinate for box
+const int boxes_y[PIN_CNT] = { ROW_TOP, ROW_TOP, ROW_TOP, ROW_TOP, ROW_TOP, ROW_TOP, ROW_BTM, ROW_BTM, ROW_BTM, ROW_BTM, ROW_BTM, ROW_BTM }; // y coordinate for box
 
 void setup() {
     // set all pins to input
-  for(int i=0; i<12; i++) {
+  for(int i=0; i<PIN_CNT; i++) {
       pinMode(pins_ar[i], INPUT);
   }  
   
@@ -21,19 +29,19 @@ void setup() {
   uView.clear(PAGE);
   
   // draw static pins
-  uView.drawChar(0*BOX_WIDTH, TOP, 'V');
-  uView.drawChar(1*BOX_WIDTH, TOP, '+');
-  uView.drawChar(0*BOX_WIDTH, BOT, 'R');
-  uView.drawChar(0*BOX_WIDTH, BOT-BOX_HEIGHT-2, 'A');
-  uView.drawChar(7*BOX_WIDTH, BOT, '-');
+  uView.drawChar(0*BOX_WIDTH, ROW_TOP, 'V');
+  uView.drawChar(1*BOX_WIDTH, ROW_TOP, '+');
+  uView.drawChar(0*BOX_WIDTH, ROW_BTM, 'R');
+  uView.drawChar(0*BOX_WIDTH, ROW_BTM-BOX_HEIGHT-2, 'A');
+  uView.drawChar(7*BOX_WIDTH+2, ROW_BTM, '-');
   uView.display();
 }
 
 void loop() {
   delay(50);
-  for(int i=0; i<12; i++) {
+  for(int i=0; i<PIN_CNT; i++) {
      // access above arrays to read and draw here 
-     if(boxes_y[i] == TOP) {
+     if(boxes_y[i] == ROW_TOP) {
        uView.setCursor(boxes_x[i], boxes_y[i]+BOX_HEIGHT+2);       
        uView.print(pins_ar[i]);
      } else {
